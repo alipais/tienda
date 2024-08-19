@@ -6,8 +6,9 @@ include 'template/cabecera.php';
 ?>
 
 <?php 
+$total = 0;
 if($_POST){
-    $total = 0;
+    
     $SID = session_id(); // devuelve una clave de la sesión
     $Correo = $_POST['email'];
 
@@ -40,7 +41,7 @@ if($_POST){
 }
 ?>
 
-<script src="https://www.paypal.com/sdk/js?client-id=AebXEXlTWtXIhRjMaFrc-9jLfx1tfihxGtsnBLiBo4z4EbWKt_-HwCTo-wyEYk8LbxPiZ_ZdTWTcuSca&currency=USD"></script>
+<script src="https://www.paypal.com/sdk/js?client-id="></script>
 
 <style>
     
@@ -70,7 +71,7 @@ if($_POST){
       <div id="paypal-button-container"></div>
     </p>
  
-    <p>Los productos podran ser descargados una vez que se procese el pago <strong>(para aclaraciones: aaaa@gmail.com)</strong></p>
+    <p>Los productos seran enviados una vez que se procese el pago <strong>(para aclaraciones: aaaa@gmail.com)</strong></p>
 </div>
 
 <div id="paypal-button-container"></div>
@@ -88,6 +89,7 @@ if($_POST){
                 purchase_units: [{
                     amount: {
                         value: '<?php echo $total; ?>', // Total a pagar
+                        currency_code: 'ARS' // Especifica la moneda como Pesos Argentinos
                     },
                     description: "Compra de productos a Tienda",
                     custom_id: "Codigo"
@@ -106,4 +108,4 @@ if($_POST){
     }).render('#paypal-button-container');
 </script>
 
-<?php include 'template/pie.php'; ?>
+<?php include 'template/pie.php';?>

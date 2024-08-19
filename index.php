@@ -67,4 +67,4 @@ include 'template/cabecera.php';
 })
     </script>
 
-<?php include 'template/pie.php'; ?>
+<?php include 'template/pie.php';?>

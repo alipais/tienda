@@ -1,4 +1,3 @@
-
 <?php 
 include 'global/config.php';
 include 'carrito.php';
@@ -9,23 +8,29 @@ include 'template/cabecera.php';
 
 <h3>Lista del carrito</h3>
 <?php if(!empty($_SESSION['CARRITO'])) { ?>
+
+<!-- Botón para vaciar el carrito -->
+<form method="post" action="mostrarCarrito.php" style="margin-bottom: 20px;">
+    <button type="submit" name="btnAccion" value="Vaciar" class="btn btn-warning">Vaciar Carrito</button>
+</form>
+
 <table class="table table-light">
     <tbody>
         <tr>
-            <th widh="40%">Descripción</th>
-            <th widh="15%" class="text-center">Cantidad</th>
-            <th widh="20%" class="text-center">Precio</th>
-            <th widh="20%" class="text-center">Total</th>
-            <th widh="5%">--</th>
+            <th width="40%">Descripción</th>
+            <th width="15%" class="text-center">Cantidad</th>
+            <th width="20%" class="text-center">Precio</th>
+            <th width="20%" class="text-center">Total</th>
+            <th width="5%">--</th>
        </tr>
        <?php $total=0; ?>
        <?php foreach($_SESSION['CARRITO'] as $indice=>$producto){?>
        <tr>
-            <td widh="40%"><?php echo $producto['NOMBRE'] ?></td>
-            <td widh="15%" class="text-center"><?php echo $producto['CANTIDAD'] ?></td>
-            <td widh="20%" class="text-center"><?php echo $producto['PRECIO'] ?></td>
-            <td widh="20%" class="text-center"><?php echo number_format($producto['PRECIO']*$producto['CANTIDAD'],2); ?></td>
-            <td widh="5%">
+            <td width="40%"><?php echo $producto['NOMBRE'] ?></td>
+            <td width="15%" class="text-center"><?php echo $producto['CANTIDAD'] ?></td>
+            <td width="20%" class="text-center"><?php echo $producto['PRECIO'] ?></td>
+            <td width="20%" class="text-center"><?php echo number_format($producto['PRECIO']*$producto['CANTIDAD'],2); ?></td>
+            <td width="5%">
 
             <form action="" method="post">
 
@@ -49,7 +54,7 @@ include 'template/cabecera.php';
         <div class="alert alert-success" role="alert">
         <div class="form-group">
            <label for="my-input">Correo de contacto</label>
-           <input id="email" class="form-control" type="email" name="email" placeholder="Por favor escrtibe tu correo" required>
+           <input id="email" class="form-control" type="email" name="email" placeholder="Por favor escribe tu correo" required>
         </div>  
         <small id="emailHelp" class="form-text text-muted">
             Los productos se enviaran a este correo
